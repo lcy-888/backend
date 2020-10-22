@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--@author 杨金刚-->
+<!--@date 2020/8/9 9:22-->
+<mapper namespace="com.its.demo.dao.RoleMapper">
+    <resultMap id="RoleResultMap" type="com.its.demo.domain.RoleDO">
+        <result property="id" column="id" jdbcType="BIGINT" />
+        <result property="role" column="role" jdbcType="VARCHAR" />
+        <result property="description" column="description" jdbcType="VARCHAR" />
+        <result property="gmtCreate" column="gmt_create" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="listAllRole">
+        select id, role, description, gmt_create from sys_role
+    </select>
+</mapper>

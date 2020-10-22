@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--@author 杨金刚-->
+<!--@date 2020/8/9 9:22-->
+<mapper namespace="com.its.demo.dao.UserMapper">
+
+    <resultMap id="UserVOResultMap" type="com.its.demo.domain.UserVO">
+        <result property="id" column="id" jdbcType="BIGINT" />
+        <result property="username" column="username" jdbcType="VARCHAR" />
+        <result property="name" column="name" jdbcType="VARCHAR" />
+        <result property="deptId" column="dept_id" jdbcType="BIGINT" />
+        <result property="roleId" column="role_id" jdbcType="BIGINT" />
+        <result property="dept" column="dept" jdbcType="VARCHAR" />
+        <result property="parentDept" column="parent_dept" jdbcType="VARCHAR" />
+        <result property="role" column="ROLE" jdbcType="VARCHAR" />
+        <result property="roleDescription" column="role_description" jdbcType="VARCHAR" />
+        <result property="disabled" column="is_disabled" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="getUserVOByUsername" resultMap="UserVOResultMap" >
+        SELECT id, username, password, name, is_disabled, dept_id,
+        role_id, role, dept,parent_dept, role_description, gmt_create
+        FROM v_sys_user
+        WHERE username = #{username}
+    </select>
+
+</mapper>
